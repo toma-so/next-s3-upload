@@ -1,10 +1,16 @@
 {
-  "private": true,
-  "workspaces": ["packages/next-s3-upload", "packages/docs-site", "test-apps/app-dir"],
+  "private": false,
+  "workspaces": [
+    "packages/next-s3-upload",
+    "packages/docs-site",
+    "test-apps/app-dir"
+  ],
   "scripts": {
     "dev": "yarn workspace next-s3-upload dev",
     "build": "yarn workspace next-s3-upload build",
     "docs": "yarn workspace docs-site dev",
     "test": "yarn workspace docs-site cypress run"
-  }
+  },
+  "name": "@toma.com/next-s3-upload",
+  "version": "0.0.2"
 }
