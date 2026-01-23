@@ -1,9 +1,8 @@
 {
   "name": "@toma.com/next-s3-upload",
   "author": "Toma.com Team (Originally Ryan Toronto <ryanto@gmail.com>)",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "private": true,
   "repository": "github:ryanto/next-s3-upload",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
