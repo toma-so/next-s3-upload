@@ -16,6 +16,10 @@ type Params = {
 let upload: Uploader<Params> = async (file, params, { onProgress }) => {
   let { key, bucket, token, region } = params;
 
+  // requestChecksumCalculation/responseChecksumValidation disable automatic CRC32
+  // checksums added in AWS SDK v3.729.0+. Without this, multipart uploads fail in
+  // browsers because the SDK can't compute per-part checksums in browser environments.
+  // See: https://github.com/aws/aws-sdk-js-v3/issues/6818
   let client = new S3Client({
     requestHandler: new FetchHttpHandler({ keepAlive: false }),
     credentials: {
@@ -24,6 +28,8 @@ let upload: Uploader<Params> = async (file, params, { onProgress }) => {
       sessionToken: token.Credentials.SessionToken,
     },
     region: region,
+    // These options are valid in SDK v3.729.0+ but may not be in type definitions
+    ...({ requestChecksumCalculation: 'WHEN_REQUIRED', responseChecksumValidation: 'WHEN_REQUIRED' }),
   });
 
   let uploadParams = {
