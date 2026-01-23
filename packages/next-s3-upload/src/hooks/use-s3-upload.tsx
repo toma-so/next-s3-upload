@@ -27,7 +27,7 @@ let upload: Uploader<Params> = async (file, params, { onProgress }) => {
       secretAccessKey: token.Credentials.SecretAccessKey,
       sessionToken: token.Credentials.SessionToken,
     },
-    region,
+    region: region,
     // These options are valid in SDK v3.729.0+ but may not be in type definitions
     ...({ requestChecksumCalculation: 'WHEN_REQUIRED', responseChecksumValidation: 'WHEN_REQUIRED' }),
   });
